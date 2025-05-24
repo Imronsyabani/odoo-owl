@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="todolist_tree_view" model="ir.ui.view">
+        <field name="name">todolist.tree.view</field>
+        <field name="model">todolist</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="completed" />
+                <field name="name" />
+                <field name="color" widget="color"/>
+            </tree>
+        </field>
+    </record>
+    <record id="todolist_form_view" model="ir.ui.view">
+        <field name="name">todolist.form.view</field>
+        <field name="model">todolist</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="completed" />
+                        <field name="name" />
+                        <field name="color" widget="color"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_todolist" model="ir.actions.act_window">
+        <field name="name">TodoList</field>
+        <field name="res_model">todolist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_todolist_client" model="ir.actions.client">
+        <field name="name">OWL TodoList</field>
+        <field name="tag">todo-list.owl_todolist</field>
+        <field name="target">main</field>
+    </record>
+
+    <menuitem id="owl_todolist_menu" name="Owl Todo List" sequence="10">
+        <menuitem
+            id="todolist_menu"
+            name="Todo List"
+            action="action_todolist"
+            sequence="10"/>
+
+        <menuitem
+            id="owl_todolist_client_menu"
+            name="Owl Todo List"
+            action="action_todolist_client"
+            sequence="10"/>
+    </menuitem>
+</odoo>
